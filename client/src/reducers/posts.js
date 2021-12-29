@@ -3,7 +3,7 @@ export default (posts = [], action) => {
         case 'FETCH_ALL':
             return action.payload; // posts
         case 'CREATE':
-            return posts;
+            return [ ...posts, action.payload]; // spread posts and add new post
         default:
             return posts;
     }
