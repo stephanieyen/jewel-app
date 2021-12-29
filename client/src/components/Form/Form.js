@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'; // Used to dispatch actions
 import useStyles from './styles';
 import { createPost } from '../../actions/posts';
 
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState(
         { creator: '', title: '', message: '', tags: '', selectedFile: '' }); // Object in the state
     const classes = useStyles();
@@ -16,7 +16,8 @@ const Form = () => {
         event.preventDefault();
 
         // Pass in data from state and make API request once the Submit button is clicked
-        dispatch(createPost(postData)); 
+
+        dispatch(createPost(postData));
     }
 
     const clear = () => {
@@ -41,7 +42,7 @@ const Form = () => {
                     <FileBase type="file" multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64 })} />
                 </div>
 
-                {/* Submit and Clear */}
+                {/* Submit and Clear buttons */}
                 <Button className={classes.buttonSubmit} variant="container" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
             </form>

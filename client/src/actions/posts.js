@@ -1,6 +1,7 @@
 import * as api from '../api';
 
 // Action creators (functions that return/dispatch actions)
+
 export const getPosts = () => async (dispatch) => {
     try {
         // Fetch data object from response from API
